@@ -4,7 +4,6 @@
 // but you don't so you're going to write it from scratch:
 
 var stringifyJSON = function(obj) {
-  // your code goes here
   if (obj === undefined || typeof obj === 'function' ) {
     return undefined;
   }
@@ -25,18 +24,15 @@ var stringifyJSON = function(obj) {
   if (typeof obj === 'object' && obj) {
     var stringifiedObjectArray = [];
     for (var key in obj) {
-    
       var stringifiedKey = stringifyJSON(key);
       var stringifiedValue = stringifyJSON(obj[key]);
       if (stringifiedKey !== undefined && stringifiedValue !== undefined ) {
         var stringifiedProperty = stringifiedKey + ':' + stringifiedValue;
         stringifiedObjectArray.push(stringifiedProperty);
       }
-      
     }
     return '{' + stringifiedObjectArray.join(',') + '}';
   }
-
 
   return '' + obj;
 };
